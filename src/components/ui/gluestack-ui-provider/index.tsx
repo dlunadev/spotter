@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { config } from './config';
-import { View, ViewProps } from 'react-native';
+import { Appearance, View, ViewProps } from 'react-native';
 import { OverlayProvider } from '@gluestack-ui/core/overlay/creator';
 import { ToastProvider } from '@gluestack-ui/core/toast/creator';
 import { useColorScheme } from 'nativewind';
@@ -18,7 +18,7 @@ export function GluestackUIProvider({
   const { colorScheme, setColorScheme } = useColorScheme();
 
   useEffect(() => {
-    setColorScheme(mode);
+    Appearance.setColorScheme('dark');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode]);
 
