@@ -1,35 +1,25 @@
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
-import '@/global.css';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
-import { useColorScheme } from '@/components/useColorScheme';
-import { Slot, usePathname } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { Fab, FabIcon } from '@/components/ui/fab';
-import { MoonIcon, SunIcon } from '@/components/ui/icon';
+import "../../global.css";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+import { Stack } from "expo-router";
+import { SWRConfig } from "swr";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
+import "@/i18n/i18n";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+export { ErrorBoundary } from "expo-router";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
   });
 
-  const [styleLoaded, setStyleLoaded] = useState(false);
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
   }, [error]);
@@ -43,25 +33,24 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const pathname = usePathname();
-  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light');
-
   return (
-    <GluestackUIProvider mode={colorMode}>
-      <ThemeProvider value={colorMode === 'dark' ? DarkTheme : DefaultTheme}>
-        <Slot />
-        {pathname === '/' && (
-          <Fab
-            onPress={() =>
-              setColorMode(colorMode === 'dark' ? 'light' : 'dark')
-            }
-            className="m-6"
-            size="lg"
-          >
-            <FabIcon as={colorMode === 'dark' ? MoonIcon : SunIcon} />
-          </Fab>
-        )}
-      </ThemeProvider>
-    </GluestackUIProvider>
+    <SWRConfig
+      value={{
+        revalidateOnFocus: true,
+        shouldRetryOnError: false,
+        dedupingInterval: 5000,
+      }}
+    >
+      <GluestackUIProvider mode="dark">
+        <GestureHandlerRootView className="flex-1">
+          <KeyboardProvider>
+            <Stack initialRouteName="(auth)">
+              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+              <Stack.Screen name="(home)" options={{ headerShown: false }} />      
+            </Stack>
+          </KeyboardProvider>
+        </GestureHandlerRootView>
+      </GluestackUIProvider>
+    </SWRConfig>
   );
 }
