@@ -1,19 +1,29 @@
-import { CircleIcon, EyeIcon, EyeOffIcon } from '@/assets/svg';
-import React, { useState } from 'react';
-import { Pressable, View, ViewStyle } from 'react-native';
-import { Text } from '../text/text.component';
-import { CustomInputProps } from './input.interface';
-import styles from './input.style';
-import { Colors } from '@/constants/Colors';
-import { Input as GInput, InputField, InputIcon, InputSlot } from '@/components/ui/input';
-import { FormControl, FormControlErrorIcon, FormControlLabel } from '@/components/ui/form-control';
+import { CircleIcon, EyeIcon, EyeOffIcon } from "@/assets/svg";
+import React, { useState } from "react";
+import { Pressable, View, ViewStyle } from "react-native";
+import { Text } from "../text/text.component";
+import { CustomInputProps } from "./input.interface";
+import styles from "./input.style";
+import { Colors } from "@/constants/Colors";
+import {
+  Input as GInput,
+  InputField,
+  InputIcon,
+  InputSlot,
+} from "@/components/ui/input";
+import {
+  FormControl,
+  FormControlErrorIcon,
+  FormControlLabel,
+} from "@/components/ui/form-control";
+import { scaleSize } from "@/helpers/scale-size";
 
 export const Input: React.FC<CustomInputProps> = (props) => {
   const {
     label,
     error,
     touched,
-    size = 'lg',
+    size = "lg",
     stretch,
     leftIcon,
     rightIcon,
@@ -21,7 +31,7 @@ export const Input: React.FC<CustomInputProps> = (props) => {
     pressable = false,
     secureTextEntry: secureProp,
     isRequired,
-    customLeftIcon,
+    customIcon,
     style,
     onPress,
     isDisabled,
@@ -29,7 +39,11 @@ export const Input: React.FC<CustomInputProps> = (props) => {
   } = props;
   const [secureTextEntry, setSecureTextEntry] = useState(!!secureProp);
 
-  const borderColor = isDisabled ? Colors.GRAY : error ? Colors.PRIMARY : Colors.TERTIARY;
+  const borderColor = isDisabled
+    ? Colors.GRAY
+    : error
+    ? Colors.PRIMARY
+    : Colors.INPUT;
 
   const backgroundColor = isDisabled ? Colors.GRAY : Colors.WHITE;
 
@@ -37,38 +51,80 @@ export const Input: React.FC<CustomInputProps> = (props) => {
     <GInput
       size={size}
       variant="rounded"
-      pointerEvents={pressable ? 'none' : 'auto'}
+      pointerEvents={pressable ? "none" : "auto"}
       isDisabled={isDisabled}
-      style={[styles.input, { borderColor, backgroundColor }, style as ViewStyle]}
+      style={[
+        styles.input,
+        { borderColor, backgroundColor },
+        style as ViewStyle,
+      ]}
     >
-      {leftIcon && <InputSlot className="pl-3">{customLeftIcon || (icon && <InputIcon as={icon} />)}</InputSlot>}
+      {leftIcon && (
+        <InputSlot className="pl-3">
+          {customIcon || (icon && <InputIcon as={icon} />)}
+        </InputSlot>
+      )}
 
-      <InputField {...rest} secureTextEntry={secureTextEntry} placeholderTextColor={Colors.TERTIARY} style={{ backgroundColor, fontSize: 16, flex: 1, color: Colors.TEXT }} />
+      <InputField
+        {...rest}
+        secureTextEntry={secureTextEntry}
+        placeholderTextColor={Colors.TERTIARY}
+        style={{ backgroundColor, fontSize: 14, flex: 1, color: Colors.TEXT }}
+      />
 
       {rightIcon && (
-        <InputSlot style={styles.slot} onPress={() => secureProp && setSecureTextEntry(!secureTextEntry)}>
-          <InputIcon as={icon || (secureTextEntry ? EyeIcon : EyeOffIcon)} color={error ? Colors.PRIMARY : Colors.TERTIARY} />
-        </InputSlot>
+        <Pressable
+          onPress={() => {
+            secureProp && setSecureTextEntry(!secureTextEntry);
+          }}
+          style={[
+            styles.slot,
+            { justifyContent: "center", alignItems: "center" },
+          ]}
+          hitSlop={10}
+        >
+          {customIcon || (
+            <InputIcon
+              as={icon || (secureTextEntry ? EyeIcon : EyeOffIcon)}
+              color={error ? Colors.PRIMARY : Colors.TERTIARY}
+            />
+          )}
+        </Pressable>
       )}
     </GInput>
   );
 
   return (
-    <FormControl isInvalid={!!error && touched} className={stretch ? 'flex-1' : ''}>
+    <FormControl isInvalid={!!error} className={stretch ? "flex-1" : ""}>
       {label && (
-        <FormControlLabel className="mb-4">
-          <Text size={16} weight="400" color={error ? Colors.PRIMARY : Colors.TEXT}>
+        <FormControlLabel className="mb-2">
+          <Text
+            size={scaleSize(12)}
+            weight="400"
+            color={error ? Colors.PRIMARY : Colors.GRAY}
+          >
             {label}
           </Text>
         </FormControlLabel>
       )}
 
-      {pressable ? <Pressable onPress={onPress}>{InputContent}</Pressable> : InputContent}
+      {pressable ? (
+        <Pressable onPress={onPress}>{InputContent}</Pressable>
+      ) : (
+        InputContent
+      )}
 
-      {touched && error && (
+      {error && (
         <View className="mt-2 items-start flex flex-row gap-2">
-          {!isRequired && <FormControlErrorIcon as={CircleIcon} color={Colors.PRIMARY} />}
-          <Text color={Colors.PRIMARY} weight={300} className="flex-wrap flex-shrink">
+          {!isRequired && (
+            <FormControlErrorIcon as={CircleIcon} color={Colors.PRIMARY} />
+          )}
+          <Text
+            color={Colors.PRIMARY}
+            size={scaleSize(12)}
+            weight={300}
+            className="flex-wrap flex-shrink"
+          >
             {isRequired ? `*${error}` : error}
           </Text>
         </View>

@@ -12,5 +12,5 @@ export interface CustomInputProps extends TextInputProps, IInputFieldProps {
   rightIcon?: boolean;
   icon?: ElementType;
   pressable?: boolean;
-  customLeftIcon?: React.ReactNode;
+  customIcon?: any;
 }
