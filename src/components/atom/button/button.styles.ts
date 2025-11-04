@@ -1,14 +1,15 @@
+import { Colors } from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#000",
+    backgroundColor: Colors.PRIMARY,
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 47,
+    minHeight: 48,
   },
   outlined: {
     backgroundColor: 'transparent',
