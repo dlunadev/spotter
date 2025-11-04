@@ -17,11 +17,12 @@ import Shift from './shift.svg';
 import Square from './square.svg';
 import Cross from './cross.svg';
 import ArrowLeft from './arrow-left.svg';
+import ArrowNarrowLeft from './arrow-narrow-left.svg';
 
 export {
   Begin, Calendar, Check, ChevronDown, CircleIcon, Clock, EyeIcon,
   EyeOffIcon, Logout,
   Machin,
-  Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft
+  Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft, ArrowNarrowLeft
 };
 
