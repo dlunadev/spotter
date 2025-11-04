@@ -2,10 +2,19 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';
 
-import en from './locales/en/translation.json';
-import es from './locales/es/translation.json';
+import en_auth from './locales/en/auth/sign-up/translation.json';
+import es_auth from './locales/es/auth/sign-up/translation.json';
 
-const language_code = Localization.getLocales()[0]?.languageCode || 'en';
+const resources = {
+  en: {
+    auth_signup: en_auth,
+  },
+  es: {
+    auth_signup: es_auth
+  },
+}
+
+const language_code = 'es';
 
 i18n
   .use(initReactI18next)
@@ -13,10 +22,8 @@ i18n
     compatibilityJSON: 'v4',
     lng: language_code,
     fallbackLng: 'en',
-    resources: {
-      en: { translation: en },
-      es: { translation: es },
-    },
+    resources,
+    ns: ['auth_signup'],
     interpolation: {
       escapeValue: false,
     },

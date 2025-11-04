@@ -1,0 +1,39 @@
+{
+  "title": "Register",
+  "sub_title": "Already have an account?",
+  "log_in": "Log In",
+  "form": {
+    "first_name": {
+      "label": "First Name",
+      "error_min_length": "First name must be at least 2 characters.",
+      "error_regexp": "Only letters are allowed."
+    },
+    "last_name": {
+      "label": "Last Name",
+      "error_min_length": "Last name must be at least 2 characters.",
+      "error_regexp": "Only letters are allowed."
+    },
+    "email": {
+      "label": "Email",
+      "error_email": "Invalid email address."
+    },
+    "birth_date": {
+      "label": "Birth of date",
+      "error_regexp": "Invalid format. Use DD-MM-YYYY.",
+      "error_undefined_date": "Date does not exist.",
+      "error_min_age": "You must be at least 16 years old."
+    },
+    "phone": {
+      "label": "Phone",
+      "error_min_length": "Phone number too short.",
+      "error_regexp": "Only numbers are allowed."
+    },
+    "password": {
+      "label": "Password",
+      "error_min_length": "Password must be at least 6 characters.",
+      "error_regexp": "Password must contain at least one uppercase letter.",
+      "error_second_regexp": "Password must contain at least one number."
+    },
+    "submit": "Register"
+  }
+}

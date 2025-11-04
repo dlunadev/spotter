@@ -1,0 +1,39 @@
+{
+  "title": "Registrarse",
+  "sub_title": "¿Ya tienes una cuenta?",
+  "log_in": "Iniciar sesión",
+  "form": {
+    "first_name": {
+      "label": "Nombre",
+      "error_min_length": "El nombre debe tener al menos 2 caracteres.",
+      "error_regexp": "Solo se permiten letras."
+    },
+    "last_name": {
+      "label": "Apellido",
+      "error_min_length": "El apellido debe tener al menos 2 caracteres.",
+      "error_regexp": "Solo se permiten letras."
+    },
+    "email": {
+      "label": "Correo electrónico",
+      "error_email": "Dirección de correo electrónico no válida."
+    },
+    "birth_date": {
+      "label": "Fecha de nacimiento",
+      "error_regexp": "Formato no válido. Use DD-MM-AAAA.",
+      "error_undefined_date": "La fecha no existe.",
+      "error_min_age": "Debe tener al menos 16 años."
+    },
+    "phone": {
+      "label": "Teléfono",
+      "error_min_length": "Número de teléfono demasiado corto.",
+      "error_regexp": "Solo se permiten números."
+    },
+    "password": {
+      "label": "Contraseña",
+      "error_min_length": "La contraseña debe tener al menos 6 caracteres.",
+      "error_regexp": "La contraseña debe contener al menos una letra mayúscula.",
+      "error_second_regexp": "La contraseña debe contener al menos un número."
+    },
+    "submit": "Registrarse"
+  }
+}
