@@ -14,7 +14,7 @@ const resources = {
   },
 }
 
-const language_code = 'es';
+const language_code = Localization.getLocales()[0]?.languageCode || 'en';
 
 i18n
   .use(initReactI18next)
