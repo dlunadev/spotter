@@ -18,11 +18,14 @@ import Square from './square.svg';
 import Cross from './cross.svg';
 import ArrowLeft from './arrow-left.svg';
 import ArrowNarrowLeft from './arrow-narrow-left.svg';
+import Facebook from './facebook.svg';
+import Google from './google.svg';
 
 export {
   Begin, Calendar, Check, ChevronDown, CircleIcon, Clock, EyeIcon,
   EyeOffIcon, Logout,
   Machin,
-  Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft, ArrowNarrowLeft
+  Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft, ArrowNarrowLeft,
+  Facebook, Google
 };
 
