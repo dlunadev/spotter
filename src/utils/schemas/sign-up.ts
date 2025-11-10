@@ -11,7 +11,19 @@ export const SignUpSchema = (t: TFunction<"auth_signup", undefined>) =>
       .string()
       .min(2, t("form.last_name.error_min_length"))
       .regex(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/, t("form.last_name.error_regexp")),
-    email: z.string().email(t("form.email.error_email")),
+
+    email: z
+      .string()
+      .email(t("form.email.error_email"))
+      .optional()
+      .or(z.literal("")),
+    phone: z
+      .string()
+      .min(6, t("form.phone.error_min_length"))
+      .regex(/^\d+$/, t("form.phone.error_regexp"))
+      .optional()
+      .or(z.literal("")),
+
     birthDate: z
       .string()
       .regex(/^\d{2}-\d{2}-\d{4}$/, t("form.birth_date.error_regexp"))
@@ -35,15 +47,25 @@ export const SignUpSchema = (t: TFunction<"auth_signup", undefined>) =>
         );
         return birth <= minDate;
       }, t("form.birth_date.error_min_age")),
-    phone: z
-      .string()
-      .min(6, t("form.phone.error_min_length"))
-      .regex(/^\d+$/, t("form.phone.error_regexp")),
+
     password: z
       .string()
       .min(6, t("form.password.error_min_length"))
       .regex(/[A-Z]/, t("form.password.error_regexp"))
       .regex(/[0-9]/, t("form.password.error_second_regexp")),
+  }).superRefine((data, ctx) => {
+    if (!data.email && !data.phone) {
+      ctx.addIssue({
+        path: ["email"],
+        message: t("form.email.error_email"),
+        code: z.ZodIssueCode.custom,
+      });
+      ctx.addIssue({
+        path: ["phone"],
+        message: t("form.phone.error_min_length"),
+        code: z.ZodIssueCode.custom,
+      });
+    }
   });
 
 export type sign_up_data_schema = z.infer<ReturnType<typeof SignUpSchema>>;
