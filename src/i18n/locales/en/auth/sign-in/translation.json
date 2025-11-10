@@ -1,0 +1,21 @@
+{
+  "title": "Sign in to your Account",
+  "sub_title": "Don't have an account?",
+  "sign_up": "Sign Up",
+  "remember_me": "Remember me",
+  "forgot_password": "Forgot Password?",
+  "or": "Or login with",
+  "terms": "By signing up, you agree to the <bold>Terms of Service</bold> and <bold>Data Processing Agreement</bold>.",
+  "form": {
+    "email": {
+      "label": "Email",
+      "error_required": "Email is required.",
+      "error_email": "Invalid email address."
+    },
+    "password": {
+      "label": "Password",
+      "error_required": "Password is required."
+    },
+    "submit": "Log In"
+  }
+}

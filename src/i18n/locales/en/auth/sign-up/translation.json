@@ -26,7 +26,8 @@
     "phone": {
       "label": "Phone",
       "error_min_length": "Phone number too short.",
-      "error_regexp": "Only numbers are allowed."
+      "error_regexp": "Only numbers are allowed.",
+      "terms": "Spotter may use your phone number to call or send text messages with information regarding your account"
     },
     "password": {
       "label": "Password",
@@ -34,6 +35,8 @@
       "error_regexp": "Password must contain at least one uppercase letter.",
       "error_second_regexp": "Password must contain at least one number."
     },
+    "use_email": "Use email instead",
+    "use_phone": "Use phone instead",
     "submit": "Register"
   }
 }

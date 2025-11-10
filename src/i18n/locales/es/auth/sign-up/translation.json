@@ -26,7 +26,8 @@
     "phone": {
       "label": "Teléfono",
       "error_min_length": "Número de teléfono demasiado corto.",
-      "error_regexp": "Solo se permiten números."
+      "error_regexp": "Solo se permiten números.",
+      "terms": "Spotter puede usar su número de teléfono para llamarlo o enviarle mensajes de texto con información sobre su cuenta."
     },
     "password": {
       "label": "Contraseña",
@@ -34,6 +35,8 @@
       "error_regexp": "La contraseña debe contener al menos una letra mayúscula.",
       "error_second_regexp": "La contraseña debe contener al menos un número."
     },
+    "use_email": "Usar email en su lugar",
+    "use_phone": "Usar teléfono en su lugar",
     "submit": "Registrarse"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "title": "Inicia sesión en tu cuenta",
+  "sub_title": "¿No tienes una cuenta?",
+  "sign_up": "Regístrate",
+  "remember_me": "Recordarme",
+  "forgot_password": "¿Olvidaste tu contraseña?",
+  "or": "O inicia sesión con",
+  "terms": "Al registrarte, aceptas los <bold>Términos de servicio</bold> y el <bold>Acuerdo de procesamiento de datos</bold>.",
+  "form": {
+    "email": {
+      "label": "Correo electrónico",
+      "error_required": "El correo electrónico es obligatorio.",
+      "error_email": "Dirección de correo electrónico no válida."
+    },
+    "password": {
+      "label": "Contraseña",
+      "error_required": "La contraseña es obligatoria."
+    },
+    "submit": "Iniciar sesión"
+  }
+}
