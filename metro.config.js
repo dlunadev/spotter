@@ -20,6 +20,7 @@ module.exports = withNativeWind(
           ...resolver.extraNodeModules,
           swr: require.resolve("swr"),
         },
+        blacklistRE: /libphonenumber-js\/es6/,
       },
     };
   })(),
