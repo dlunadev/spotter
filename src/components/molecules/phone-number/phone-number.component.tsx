@@ -14,16 +14,23 @@ import { Input } from '../../atom/input/input.component';
 import { Text } from '../../atom/text/text.component';
 import { Colors } from '@/constants/Colors';
 import { useCountries } from '@/hooks';
+import { CountryCode } from 'libphonenumber-js';
 
 interface InputProps {
-  value: string;
+  value: string | undefined;
   label?: string;
   error?: string;
   onBlur: () => void;
   onChangeText: (text: string) => void;
   placeholder?: string;
-  phoneNumber?: string;
-  handleChangeCode: (code: string) => void;
+  phoneNumber?: {
+    code: string;
+    id: string;
+  };
+  handleChangeCode: React.Dispatch<React.SetStateAction<{
+    id: string;
+    code: CountryCode;
+}>>;
 }
 
 export const PhoneNumber = (props: InputProps) => {
@@ -37,6 +44,7 @@ export const PhoneNumber = (props: InputProps) => {
     value: country.codeNumber,
     image: country.flag,
     id: country.codeNumber,
+    code: country.code,
   }));
 
   const handleInputChange = (text: string) => {
@@ -47,18 +55,18 @@ export const PhoneNumber = (props: InputProps) => {
     return parsedCountries?.filter((item) => item.label.toLowerCase().includes(searchText.toLowerCase()) || item.value.includes(searchText));
   }, [parsedCountries, searchText]);
 
-  const handleClose = (number: string) => {
+  const handleClose = (country: {id: string, code: CountryCode}) => {
     setShowActionsheet(false);
-    setCountryCodeSelected(number);
-    handleChangeCode(number);
+    setCountryCodeSelected(country);
+    handleChangeCode({id: country.id, code: country.code});
     setSearchText('');
   };
 
-  const Item: React.FC<{ title: string; image: string; id: string, subtitle: string }> = useCallback(
+  const Item: React.FC<{ title: string; image: string; id: string, subtitle: string, code: string }> = useCallback(
     (value) => {
       return (
         <ActionsheetItem
-          onPress={() => handleClose(value.id)}
+          onPress={() => handleClose({id: value.id, code: value.code as CountryCode })}
           className="flex-row items-center p-3 rounded-xl mb-1 bg-white shadow-sm active:bg-gray-100"
         >
           <View className="w-10 h-10 rounded-full overflow-hidden bg-gray-100 justify-center items-center mr-3">
@@ -105,7 +113,7 @@ export const PhoneNumber = (props: InputProps) => {
             className="items-center justify-center pr-3"
             onPress={() => setShowActionsheet(true)}
           >
-            <Text weight={400}>{countryCodeSelected}</Text>
+            <Text weight={400}>{countryCodeSelected?.id}</Text>
           </Pressable>
         }
         {...props}
@@ -130,7 +138,7 @@ export const PhoneNumber = (props: InputProps) => {
           </View>
           <ActionsheetFlatList
             data={filteredData()}
-            renderItem={({ item }: any) => <Item id={item.id} title={item.value} image={item.image} subtitle={item.label} />}
+            renderItem={({ item }: any) => <Item id={item.id} code={item.code} title={item.value} image={item.image} subtitle={item.label} />}
             contentContainerClassName="gap-4"
             keyExtractor={(item: any) => `${item.id}-${item.label}`}
           />
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
   custom_icon: {
     height: 40,
     borderEndWidth: 1,
-    borderColor: Colors.INPUT,
+    borderColor: Colors.LIGHT_GRAY,
     minWidth: 40,
   }
 });

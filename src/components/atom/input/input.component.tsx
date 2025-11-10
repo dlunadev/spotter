@@ -17,6 +17,7 @@ import {
   FormControlLabel,
 } from "@/components/ui/form-control";
 import { scaleSize } from "@/helpers/scale-size";
+import { MotiView, AnimatePresence } from "moti";
 
 export const Input: React.FC<CustomInputProps> = (props) => {
   const {
@@ -43,7 +44,7 @@ export const Input: React.FC<CustomInputProps> = (props) => {
     ? Colors.GRAY
     : error
     ? Colors.PRIMARY
-    : Colors.INPUT;
+    : Colors.LIGHT_GRAY;
 
   const backgroundColor = isDisabled ? Colors.GRAY : Colors.WHITE;
 
@@ -114,21 +115,34 @@ export const Input: React.FC<CustomInputProps> = (props) => {
         InputContent
       )}
 
-      {error && (
-        <View className="mt-2 items-start flex flex-row gap-2">
-          {!isRequired && (
-            <FormControlErrorIcon as={CircleIcon} color={Colors.PRIMARY} />
-          )}
-          <Text
-            color={Colors.PRIMARY}
-            size={scaleSize(12)}
-            weight={300}
-            className="flex-wrap flex-shrink"
+      <AnimatePresence>
+        {error && (
+          <MotiView
+            from={{ opacity: 0, translateY: -6 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: -6 }}
+            transition={{ type: "timing", duration: 350 }}
+            style={{
+              marginTop: 8,
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 6,
+            }}
           >
-            {isRequired ? `*${error}` : error}
-          </Text>
-        </View>
-      )}
+            {!isRequired && (
+              <FormControlErrorIcon as={CircleIcon} color={Colors.PRIMARY} />
+            )}
+            <Text
+              color={Colors.PRIMARY}
+              size={scaleSize(12)}
+              weight={300}
+              className="flex-wrap flex-shrink"
+            >
+              {isRequired ? `*${error}` : error}
+            </Text>
+          </MotiView>
+        )}
+      </AnimatePresence>
     </FormControl>
   );
 };

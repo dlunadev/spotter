@@ -1,71 +1,62 @@
-import { View, Dimensions } from "react-native";
+import { View, ImageBackground } from "react-native";
 import React from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Button, HStack, Text, VStack } from "@/components";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import { Fab, Text } from "@/components";
+import { ArrowNarrowLeft } from "@/assets/svg";
 import { Colors } from "@/constants/Colors";
+import { useDimensions, useInsets } from "@/hooks";
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { Wrapper } from "@/components/";
+import { useTranslation } from "react-i18next";
+import SignInForm from "@/components/organism/form/sign-in.form";
 import { AuthRoutesLink } from "@/utils/enum/routes";
 
-const { height } = Dimensions.get("screen");
-
-const social_media = [
-  {
-    name: "google",
-    color: "#DB4437",
-  },
-  {
-    name: "facebook",
-    color: "#4267B2",
-  },
-  {
-    name: "apple",
-    color: "#000",
-  },
-];
-
 export default function SignIn() {
-  const panel_height = height / 3;
+  const { top } = useInsets();
+  const { t } = useTranslation("auth_signin");
+  const { screen_dimensions } = useDimensions();
+
+  const { height } = screen_dimensions;
 
   return (
-    <VStack className="flex-1">
-      <View className="w-full h-full bg-[#333] absolute" />
-
-      <View className="flex-1 items-left justify-end px-4" style={{ marginBottom: panel_height + 18 }}>
-        <Text color={Colors.WHITE} size={24}>Contenido principal</Text>
-        <Text color={Colors.WHITE} size={16}>Subtexto</Text>
-      </View>
-      <View
-        className="absolute bottom-0 w-full h-2/6 p-4 pt-10 gap-2 bg-white items-center"
-        style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
+    <KeyboardAwareScrollView
+      className="flex-1"
+      contentContainerClassName="grow"
+      bottomOffset={120}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="always"
+    >
+      <ImageBackground
+        source={require("@/assets/images/background.png")}
+        resizeMode="cover"
+        className="bg-[#0D0D1B] w-full"
+        style={{ paddingTop: top, height: height / 3 }}
       >
-        <VStack className="gap-2 w-full">
-          <Button onPress={() => router.push(AuthRoutesLink.SIGN_UP)}>Registrarse</Button>
-          <Button onPress={() => {}} outlined>
-            Iniciar Sesión
-          </Button>
-        </VStack>
+        <LinearGradient
+          colors={["rgba(255,255,255,0.15)", "rgba(255,255,255,0)"]}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0.5, y: 0.5 }}
+          className="absolute inset-0"
+        />
 
-        <View className="flex-row items-center justify-center w-[90%] my-4">
-          <View className="flex-1 bg-[#ccc] h-[1px]" />
-          <Text className="mx-4 text-[#888] font-semibold">O</Text>
-          <View className="flex-1 bg-[#ccc] h-[1px]" />
+        <View className="flex-1 justify-end pb-6">
+          <View className="px-6 py-4 gap-2">
+            <Text size={32} color={Colors.WHITE}>
+              {t("title")}
+            </Text>
+            <Text size={14} color={Colors.WHITE}>
+              {t("sub_title")} {" "}
+              <Text color={Colors.BLUE} underline onPress={() => router.push(AuthRoutesLink.SIGN_UP)}>
+                {t("sign_up")}
+              </Text>
+            </Text>
+          </View>
         </View>
-
-        <HStack className="gap-2">
-          {social_media.map((media) => (
-            <View
-              className="w-[40px] h-[40px] rounded-full p-2 border border-black items-center justify-center"
-              key={media.name}
-            >
-              <FontAwesome
-                name={media.name as any}
-                size={20}
-                color={media.color}
-              />
-            </View>
-          ))}
-        </HStack>
-      </View>
-    </VStack>
+      </ImageBackground>
+      <Wrapper className="flex-1">
+        <SignInForm />
+      </Wrapper>
+    </KeyboardAwareScrollView>
   );
 }

@@ -4,8 +4,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PRIMARY,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -14,7 +12,11 @@ export const styles = StyleSheet.create({
   outlined: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: "#000",
+    borderColor: Colors.LIGHT_GRAY,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 48,
+    gap: 8
   },
   disabled: {
     backgroundColor: '#A0A0A0',

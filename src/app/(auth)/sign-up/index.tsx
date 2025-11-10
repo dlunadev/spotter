@@ -1,23 +1,16 @@
 import { View, ImageBackground } from "react-native";
 import React from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import {
-  ButtonGradient,
-  Fab,
-  HStack,
-  Input,
-  PhoneNumber,
-  Text,
-  VStack,
-} from "@/components";
-import { ArrowNarrowLeft, Calendar as CalendarIcon } from "@/assets/svg";
+import { Fab, Text } from "@/components";
+import { ArrowNarrowLeft } from "@/assets/svg";
 import { Colors } from "@/constants/Colors";
 import { useDimensions, useInsets } from "@/hooks";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import { Wrapper, Calendar } from "@/components/";
+import { Wrapper } from "@/components/";
 import RegisterForm from "@/components/organism/form/sign-up.form";
 import { useTranslation } from "react-i18next";
+import { AuthRoutesLink } from "@/utils/enum/routes";
 
 export default function SignUp() {
   const { top } = useInsets();
@@ -26,14 +19,13 @@ export default function SignUp() {
 
   const { height } = screen_dimensions;
 
-  console.log(t("title"));
   return (
     <KeyboardAwareScrollView
       className="flex-1"
       contentContainerClassName="grow"
       bottomOffset={120}
       showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps
+      keyboardShouldPersistTaps="always"
     >
       <ImageBackground
         source={require("@/assets/images/background.png")}
@@ -65,7 +57,7 @@ export default function SignUp() {
             </Text>
             <Text size={14} color={Colors.WHITE}>
               {t("sub_title")}{" "}
-              <Text color={Colors.BLUE} underline>
+              <Text color={Colors.BLUE} underline onPress={() => router.push(AuthRoutesLink.SIGN_IN)}>
                 {t("log_in")}
               </Text>
             </Text>
