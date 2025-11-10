@@ -41,6 +41,7 @@
     "expo-web-browser": "~15.0.7",
     "i18n-iso-countries": "^7.14.0",
     "i18next": "^25.6.0",
+    "libphonenumber-js": "^1.12.26",
     "lucide-react": "^0.552.0",
     "lucide-react-native": "^0.510.0",
     "moti": "^0.30.0",
