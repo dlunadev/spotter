@@ -11,6 +11,7 @@ import { Wrapper } from "@/components/";
 import { useTranslation } from "react-i18next";
 import SignInForm from "@/components/organism/form/sign-in.form";
 import { AuthRoutesLink } from "@/utils/enum/routes";
+import { Hero } from "@/components";
 
 export default function SignIn() {
   const { top } = useInsets();
@@ -27,33 +28,7 @@ export default function SignIn() {
       showsVerticalScrollIndicator={false}
       keyboardShouldPersistTaps="always"
     >
-      <ImageBackground
-        source={require("@/assets/images/background.png")}
-        resizeMode="cover"
-        className="bg-[#0D0D1B] w-full"
-        style={{ paddingTop: top, height: height / 3 }}
-      >
-        <LinearGradient
-          colors={["rgba(255,255,255,0.15)", "rgba(255,255,255,0)"]}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0.5, y: 0.5 }}
-          className="absolute inset-0"
-        />
-
-        <View className="flex-1 justify-end pb-6">
-          <View className="px-6 py-4 gap-2">
-            <Text size={32} color={Colors.WHITE}>
-              {t("title")}
-            </Text>
-            <Text size={14} color={Colors.WHITE}>
-              {t("sub_title")} {" "}
-              <Text color={Colors.BLUE} underline onPress={() => router.push(AuthRoutesLink.SIGN_UP)}>
-                {t("sign_up")}
-              </Text>
-            </Text>
-          </View>
-        </View>
-      </ImageBackground>
+      <Hero title={t("title")} subtitle={t("sub_title")} route_to={t("sign_up")} redirect_to={() => router.push(AuthRoutesLink.SIGN_UP)} />
       <Wrapper className="flex-1">
         <SignInForm />
       </Wrapper>
