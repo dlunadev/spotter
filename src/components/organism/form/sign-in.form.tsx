@@ -22,6 +22,8 @@ import {
 import { Text } from "@/components/atom/text/text.component";
 import { CheckIcon } from "@/components/ui/icon";
 import { sign_in_data_schema, SignInSchema } from "@/utils/schemas/sign-in";
+import { router } from "expo-router";
+import { AuthRoutesLink } from "@/utils/enum/routes";
 
 export default function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -89,7 +91,7 @@ export default function SignInForm() {
               {t("remember_me")}
             </Text>
           </Checkbox>
-          <Text color={Colors.BLUE} size={12} weight={600} onPress={() => {}}>
+          <Text color={Colors.BLUE} size={12} weight={600} onPress={() => router.push(AuthRoutesLink.RECOVERY_PASSWORD)}>
             {t("forgot_password")}
           </Text>
         </HStack>

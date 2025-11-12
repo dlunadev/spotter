@@ -33,6 +33,7 @@ export default function RegisterForm() {
     control,
     handleSubmit,
     setValue,
+    setError,
     formState: { errors, isValid },
   } = useForm<sign_up_data_schema>({
     resolver: zodResolver(SignUpSchema(t)),
@@ -155,13 +156,30 @@ export default function RegisterForm() {
                     value || "",
                     countryCode.code
                   );
+                  const validated = PhoneUtils.validate(
+                    `${countryCode.id}${value}` || "",
+                    countryCode.code
+                  );
+
+                  if (!validated) {
+                    setError("phone", {
+                      message: "ta mal perro",
+                    });
+                  }
+
                   if (formatted)
-                    setValue("phone", formatted, { shouldValidate: true });
+                    setValue("phone", formatted, {
+                      shouldValidate: true,
+                    });
                 }}
                 phoneNumber={countryCode}
               />
             )}
           />
+          <Text size={12} color={Colors.GRAY}>
+            You'll need to verify that you own this phone number. Be sure to
+            include your country code
+          </Text>
         </>
       )}
 
