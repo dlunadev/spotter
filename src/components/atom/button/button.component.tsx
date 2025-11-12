@@ -61,6 +61,7 @@ export const ButtonGradient = (props: ButtonProps) => {
   const {
     disabled = false,
     outlined = false,
+    loading,
     children,
     style,
     ...rest
@@ -94,7 +95,9 @@ export const ButtonGradient = (props: ButtonProps) => {
         end={{ x: 0.9, y: 0.5 }}
         className="flex-1 justify-center items-center"
       >
-        <Text color={textColor}>{children}</Text>
+        {
+          loading ? <ActivityIndicator color={Colors.WHITE} /> : <Text color={textColor}>{children}</Text>
+        }
       </LinearGradient>
     </TouchableOpacity>
   );
