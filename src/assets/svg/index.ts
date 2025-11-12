@@ -20,12 +20,15 @@ import ArrowLeft from './arrow-left.svg';
 import ArrowNarrowLeft from './arrow-narrow-left.svg';
 import Facebook from './facebook.svg';
 import Google from './google.svg';
+import Phone from './phone.svg';
+import Email from './mail.svg';
+import Stars from './stars.svg';
 
 export {
   Begin, Calendar, Check, ChevronDown, CircleIcon, Clock, EyeIcon,
   EyeOffIcon, Logout,
   Machin,
   Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft, ArrowNarrowLeft,
-  Facebook, Google
+  Facebook, Google, Phone, Email, Stars
 };
 
