@@ -23,7 +23,7 @@ import { Text } from "@/components/atom/text/text.component";
 import { CheckIcon } from "@/components/ui/icon";
 import { sign_in_data_schema, SignInSchema } from "@/utils/schemas/sign-in";
 import { router } from "expo-router";
-import { AuthRoutesLink } from "@/utils/enum/routes";
+import { AuthRoutesLink, TabsRoutesLink } from "@/utils/enum/routes";
 
 export default function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,6 +47,7 @@ export default function SignInForm() {
     console.log("⏳ Enviando datos...");
     await new Promise((resolve) => setTimeout(resolve, 3000));
     console.log("✅ Datos válidos:", data);
+    router.push(TabsRoutesLink.HOME)
     setIsLoading(false);
   };
 
