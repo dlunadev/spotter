@@ -120,11 +120,9 @@ export const PhoneNumber = (props: InputProps) => {
         onBlur={onBlur}
         onChangeText={(text: string) => {
           const numericText = text.replace(/[^0-9]/g, '');
-          const limitedText = numericText.slice(0, 10);
-          onTextChange(limitedText);
+          onTextChange(numericText);
         }}
         value={value}
-        maxLength={10}
         keyboardType='phone-pad'
       />
       <Actionsheet isOpen={showActionsheet} onClose={() => setShowActionsheet(false)} snapPoints={[70]} useRNModal>
