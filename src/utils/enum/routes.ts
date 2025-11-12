@@ -5,8 +5,8 @@ export enum AuthRoutes {
   SIGN_UP = "sign-up/index",
   RECOVERY_PASSWORD = "password/recovery-password/index",
   SEND_CODE = "password/code/index",
-  RESET_PASSWORD = "reset-password",
-  SUCESS = "password-success",
+  RESET_PASSWORD = "password/reset-password/index",
+  SUCESS = "password/success/index",
 }
 
 export const AuthRoutesLink = {
@@ -19,3 +19,13 @@ export const AuthRoutesLink = {
 } as const;
 
 export type AuthRoutesLink = typeof AuthRoutesLink[keyof typeof AuthRoutesLink];
+
+export enum TabsRoutes {
+  HOME = 'home/index'
+}
+
+export const TabsRoutesLink = {
+  HOME: "/(tabs)/home" as Href
+}
+
+export type TabsRoutesLink = typeof TabsRoutesLink[keyof typeof TabsRoutesLink]
