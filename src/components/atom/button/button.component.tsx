@@ -64,6 +64,7 @@ export const ButtonGradient = (props: ButtonProps) => {
     loading,
     children,
     style,
+    stretch,
     ...rest
   } = props;
 
@@ -81,11 +82,19 @@ export const ButtonGradient = (props: ButtonProps) => {
     ? "#F0F0F0"
     : Colors.WHITE;
 
+  const buttonStyles = [
+    stretch
+      ? { flex: 1 }
+      : {
+          width: "100%",
+        },
+  ];
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       disabled={disabled}
-      style={[{ height: 48, opacity: disabled ? 0.7 : 1 }, style]}
+      style={[{ height: 48, opacity: disabled ? 0.7 : 1 }, ...buttonStyles, style]}
       className="rounded-[10px] overflow-hidden"
       {...rest}
     >
@@ -95,9 +104,11 @@ export const ButtonGradient = (props: ButtonProps) => {
         end={{ x: 0.9, y: 0.5 }}
         className="flex-1 justify-center items-center"
       >
-        {
-          loading ? <ActivityIndicator color={Colors.WHITE} /> : <Text color={textColor}>{children}</Text>
-        }
+        {loading ? (
+          <ActivityIndicator color={Colors.WHITE} />
+        ) : (
+          <Text color={textColor}>{children}</Text>
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );

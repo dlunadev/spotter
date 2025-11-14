@@ -70,8 +70,8 @@ export const Input: React.FC<CustomInputProps> = (props) => {
         {...rest}
         secureTextEntry={secureTextEntry}
         placeholderTextColor={Colors.TERTIARY}
-        style={{ backgroundColor, fontSize: 14, flex: 1, color: Colors.TEXT }}
-        autoCapitalize={secureTextEntry ? 'none' : 'characters'}
+        style={{ backgroundColor: 'transparent', fontSize: 14, flex: 1, color: Colors.TEXT }}
+        autoCapitalize={secureTextEntry ? 'none' : 'sentences'}
       />
 
       {rightIcon && (
