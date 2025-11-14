@@ -1,4 +1,4 @@
-import { Href } from "expo-router";
+import { Href, RelativePathString } from "expo-router";
 
 export enum AuthRoutes {
   SIGN_IN = "sign-in/index",
@@ -20,12 +20,27 @@ export const AuthRoutesLink = {
 
 export type AuthRoutesLink = typeof AuthRoutesLink[keyof typeof AuthRoutesLink];
 
+// Tabs Routes
+
 export enum TabsRoutes {
   HOME = 'home/index'
 }
 
 export const TabsRoutesLink = {
-  HOME: "/(tabs)/home" as Href
+  HOME: "/(tabs)/home/" as Href
 }
 
 export type TabsRoutesLink = typeof TabsRoutesLink[keyof typeof TabsRoutesLink]
+
+// Home Routes
+
+export enum HomeRoutes {
+  HOME = "index",
+  SPOT = "[id]/index",
+}
+
+export const HomeRoutesLink = {
+  SPOT: "/(home)/[id]/" as RelativePathString
+}
+
+export type HomeRoutesLink = typeof HomeRoutesLink[keyof typeof HomeRoutesLink]
