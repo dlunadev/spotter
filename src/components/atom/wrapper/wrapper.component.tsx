@@ -1,10 +1,27 @@
 import { View } from "react-native";
 import React, { ReactElement } from "react";
 import { useInsets } from "@/hooks";
-import { Colors } from "@/constants/Colors";
 
-export  function Wrapper({children, className }: {children: ReactElement | ReactElement[], className?: string}) {
+export function Wrapper({
+  children,
+  className,
+  padding = true,
+}: {
+  children: ReactElement | ReactElement[];
+  className?: string;
+  padding?: boolean;
+}) {
   const { top, bottom } = useInsets();
 
-  return <View style={{ paddingTop: top, paddingBottom: bottom + 12, flex: 1, backgroundColor: Colors.WHITE  }} className={`${className} p-6`}>{children}</View>;
+  return (
+    <View
+      style={{
+        paddingTop: padding ? top : 0,
+        paddingBottom: bottom + 16,
+      }}
+      className={`${className} ${padding ? "p-6" : ""} grow bg-white`}
+    >
+      {children}
+    </View>
+  );
 }
