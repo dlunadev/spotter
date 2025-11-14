@@ -44,8 +44,12 @@ function RootLayoutNav() {
       <GluestackUIProvider mode="dark">
         <GestureHandlerRootView className="flex-1">
           <KeyboardProvider>
-            <Stack initialRouteName="(auth)">
-              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+            <Stack
+              initialRouteName="(auth)"
+              screenOptions={{ headerShown: false }}
+            >
+              <Stack.Screen name="(auth)" />
+              <Stack.Screen name="(tabs)" />
             </Stack>
           </KeyboardProvider>
         </GestureHandlerRootView>
