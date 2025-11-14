@@ -47,7 +47,7 @@ export default function SignInForm() {
     console.log("⏳ Enviando datos...");
     await new Promise((resolve) => setTimeout(resolve, 3000));
     console.log("✅ Datos válidos:", data);
-    router.push(TabsRoutesLink.HOME)
+    router.push(TabsRoutesLink.HOME);
     setIsLoading(false);
   };
 
@@ -92,13 +92,26 @@ export default function SignInForm() {
               {t("remember_me")}
             </Text>
           </Checkbox>
-          <Text color={Colors.BLUE} size={12} weight={600} onPress={() => router.push(AuthRoutesLink.RECOVERY_PASSWORD)}>
+          <Text
+            color={Colors.BLUE}
+            size={12}
+            weight={600}
+            onPress={() => router.push(AuthRoutesLink.RECOVERY_PASSWORD)}
+          >
             {t("forgot_password")}
           </Text>
         </HStack>
       </VStack>
 
-      <ButtonGradient onPress={handleSubmit(onSubmit)} disabled={isLoading}>
+      <ButtonGradient
+        onPress={() =>
+          onSubmit({
+            email: "",
+            password: "",
+          })
+        }
+        disabled={isLoading}
+      >
         {isLoading ? <ButtonSpinner color={Colors.WHITE} /> : t("form.submit")}
       </ButtonGradient>
 
