@@ -17,18 +17,26 @@ import Shift from './shift.svg';
 import Square from './square.svg';
 import Cross from './cross.svg';
 import ArrowLeft from './arrow-left.svg';
+import ArrowRight from './arrow-right.svg';
 import ArrowNarrowLeft from './arrow-narrow-left.svg';
 import Facebook from './facebook.svg';
 import Google from './google.svg';
 import Phone from './phone.svg';
 import Email from './mail.svg';
 import Stars from './stars.svg';
+import Star from './star.svg';
+import Location from './location.svg';
+import NotificationOutlined from './notification-outlined.svg';
+import Home from './home.svg';
+import Profile from './profile.svg';
 
 export {
   Begin, Calendar, Check, ChevronDown, CircleIcon, Clock, EyeIcon,
   EyeOffIcon, Logout,
   Machin,
   Pause, PauseIcon, Pin, Play, Resumed, Shift, Square, Cross, ArrowLeft, ArrowNarrowLeft,
-  Facebook, Google, Phone, Email, Stars
+  Facebook, Google, Phone, Email, Stars,
+  NotificationOutlined, Star, Location, ArrowRight,
+  Home, Profile
 };
 
