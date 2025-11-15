@@ -5,24 +5,26 @@ import { ButtonGradient, Text, VStack } from "@/components";
 import { AuthRoutesLink } from "@/utils/enum/routes";
 import { Stars } from "@/assets/svg";
 import { LinearGradient } from "expo-linear-gradient";
+import { Colors } from "@/constants/Colors";
+import { useTranslation } from "react-i18next";
 
 export default function PasswordSuccess() {
+  const { t } = useTranslation("auth_success");
+
   return (
     <LinearGradient
-      colors={["#1D61E7", "#12B8FF"] as const}
-      start={{ x: 0, y: 0.5 }}
-      end={{ x: 0.9, y: 0.5 }}
+      colors={["#2A6DE8", "#FFFFFF"] as const}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
       className="flex-1"
     >
       <VStack className="justify-center flex-1 gap-4 p-6">
         <View className="gap-3 items-center mb-8">
-          <Stars color="#1D61E7" />
+          <Stars color={Colors.LIGHT_GRAY} />
           <Text size={32} weight={600} align="center">
-            ¡Contraseña reestablecida con éxito!
+            {t("title")}
           </Text>
-          <Text weight={400}>
-            Tu contraseña se ha actualizado correctamente.
-          </Text>
+          <Text weight={400}>{t("description")}</Text>
         </View>
         <ButtonGradient
           onPress={() => {
@@ -30,7 +32,7 @@ export default function PasswordSuccess() {
             router.replace(AuthRoutesLink.SIGN_IN);
           }}
         >
-          Volver al inicio
+          {t("button_back")}
         </ButtonGradient>
       </VStack>
     </LinearGradient>
