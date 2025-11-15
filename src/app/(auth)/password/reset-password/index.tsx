@@ -1,13 +1,21 @@
 import { Pressable, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
 import { useInsets } from "@/hooks";
-import { ButtonGradient, Hero, Input, Text, VStack, Wrapper } from "@/components";
+import {
+  ButtonGradient,
+  Hero,
+  Input,
+  Text,
+  VStack,
+  Wrapper,
+} from "@/components";
 import { Check, Cross } from "@/assets/svg";
 import { messages } from "@/helpers/password-validate";
 import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
 import { AuthRoutesLink } from "@/utils/enum/routes";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import { useTranslation } from "react-i18next";
 
 const validatePassword = (password: string) => {
   return {
@@ -20,6 +28,7 @@ const validatePassword = (password: string) => {
 };
 
 export default function ResetPassword() {
+  const { t } = useTranslation("auth_reset");
   const { bottom } = useInsets();
 
   const [password, setPassword] = useState("");
@@ -36,22 +45,22 @@ export default function ResetPassword() {
       keyboardShouldPersistTaps="always"
     >
       <Hero
-        title="Restablecer contraseña"
-        subtitle="Ya tenes cuenta? Entonces"
-        route_to="Inicia sesion pelotudo"
+        title={t("title")}
+        subtitle={t("subtitle")}
+        route_to={t("route_to")}
         redirect_to={() => router.push(AuthRoutesLink.SIGN_IN)}
       />
 
       <Wrapper>
         <VStack className="gap-3 items-center">
           <Text align="center">
-            Asegúrate de elegir una contraseña segura y fácil de recordar.
+            {t("instruction")}
           </Text>
         </VStack>
 
         <View className="mt-8 gap-4 pb-8">
           <Input
-            label="Contraseña"
+            label={t("password_label")}
             onBlur={() => {}}
             onChangeText={setPassword}
             placeholder=""
@@ -59,7 +68,7 @@ export default function ResetPassword() {
             rightIcon
           />
           <Input
-            label="Confirmar contraseña"
+            label={t("confirm_password_label")}
             onBlur={() => {}}
             onChangeText={setConfirmPassword}
             placeholder=""
@@ -78,7 +87,7 @@ export default function ResetPassword() {
                 )}
 
                 <Text style={[styles.text]} weight={300}>
-                  {messages[key as keyof typeof messages]}
+                  {messages(t)[key as keyof typeof messages]}
                 </Text>
               </View>
             ))}
@@ -93,7 +102,7 @@ export default function ResetPassword() {
               )}
 
               <Text style={[styles.text]} weight={300}>
-                {messages.passwordEqual}
+                {messages(t).passwordEqual}
               </Text>
             </View>
           </View>
@@ -105,7 +114,7 @@ export default function ResetPassword() {
               }}
               stretch
             >
-              Reestablecer Contraseña
+              {t("button_submit")}
             </ButtonGradient>
           </View>
         </View>

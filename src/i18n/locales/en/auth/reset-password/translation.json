@@ -1,0 +1,17 @@
+{
+  "title": "Reset password",
+  "subtitle": "Already have an account?",
+  "route_to": "Sign in",
+  "instruction": "Make sure to choose a password that is secure and easy to remember.",
+  "password_label": "Password",
+  "confirm_password_label": "Confirm password",
+  "button_submit": "Reset password",
+  "validations": {
+    "isLengthValid": "Must be between 8 and 20 characters long.",
+    "hasLowerCase": "Must include at least one lowercase letter.",
+    "hasUpperCase": "Must include at least one uppercase letter.",
+    "hasNumber": "Must include at least one number.",
+    "hasSpecialChar": "Must include at least one special character.",
+    "passwordEqual": "Both passwords must match."
+  }
+}
