@@ -19,7 +19,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({ value, onCodeChange }) => {
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
-    setValue: onCodeChange, // Usar la función del padre
+    setValue: onCodeChange,
   });
 
   return (
@@ -27,7 +27,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({ value, onCodeChange }) => {
       ref={ref}
       {...props}
       value={value}
-      onChangeText={onCodeChange} // Actualizar el valor en el padre
+      onChangeText={onCodeChange}
       cellCount={CELL_COUNT}
       rootStyle={styles.codeFieldRoot}
       keyboardType="number-pad"
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     lineHeight: 48,
     fontSize: 24,
     borderWidth: 2,
-    borderColor: "#000",
+    borderColor: Colors.LIGHT_GRAY,
     textAlign: "center",
     borderRadius: 8,
     justifyContent: "center",
@@ -65,9 +65,10 @@ const styles = StyleSheet.create({
   cellText: {
     fontSize: 24,
     fontWeight: "bold",
+    color: Colors.LIGHT_GRAY,
   },
   focusCell: {
-    borderColor: Colors.GRAY,
+    borderColor: Colors.LIGHT_GRAY,
   },
 });
 

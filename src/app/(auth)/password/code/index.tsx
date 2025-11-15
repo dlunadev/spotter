@@ -8,6 +8,7 @@ import { Wrapper } from "@/components";
 import { useTranslation } from "react-i18next";
 import { AuthRoutesLink } from "@/utils/enum/routes";
 import { useTimer } from "@/hooks";
+import OTPInput from "@/components/atom/otp/otp.component";
 
 export default function Code() {
   const [showTimer, setShowTimer] = useState(false);
@@ -50,10 +51,9 @@ export default function Code() {
         <VStack className="gap-2 mb-2">
           <Text size={16}>Por favor, revise su email.</Text>
         </VStack>
-        <View className="flex-1">
-          <Input />
+        <View className="flex-1 items-center">
+          <OTPInput value={""} onCodeChange={() => {}} />
         </View>
-        {/* <OTPInput value={otp} onCodeChange={setOtp} /> */}
         <VStack className="gap-4">
           <ButtonGradient
             onPress={() => {
