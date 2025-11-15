@@ -1,0 +1,23 @@
+{
+  "title": "Getting back into your account",
+  "subtitle": "Tell us some information about your account",
+  "phone_verification_info": "You'll need to verify that you own this phone number. Be sure to include your country code",
+  "having_problems": "Having problems with your email or phone?",
+  "button_continue": "Continue",
+  "modal_title_phone": "Confirm your number",
+  "modal_title_email": "Confirm your email",
+  "modal_text_before_value": "We will send a verification code to",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "invalid_phone": "Invalid phone number",
+  "form": {
+    "phone": {
+      "label": "Phone",
+      "error_min_length": "Phone number too short.",
+      "error_regexp": "Only numbers are allowed.",
+      "terms": "Spotter may use your phone number to call or send text messages with information regarding your account"
+    },
+    "use_email": "Use email instead",
+    "use_phone": "Use phone instead"
+  }
+}

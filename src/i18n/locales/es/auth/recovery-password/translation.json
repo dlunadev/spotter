@@ -1,0 +1,23 @@
+{
+  "title": "Recupera el acceso a tu cuenta",
+  "subtitle": "Cuéntanos algunos datos para ayudarte a recuperarla",
+  "phone_verification_info": "Deberás verificar que este número te pertenece. Asegúrate de incluir el código de tu país.",
+  "having_problems": "¿Tienes problemas con tu correo electrónico o número de teléfono?",
+  "button_continue": "Continuar",
+  "modal_title_phone": "Confirma tu número",
+  "modal_title_email": "Confirma tu correo electrónico",
+  "modal_text_before_value": "Te enviaremos un código de verificación a",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "invalid_phone": "Número de teléfono no válido",
+  "form": {
+    "phone": {
+      "label": "Teléfono",
+      "error_min_length": "Número de teléfono demasiado corto.",
+      "error_regexp": "Solo se permiten números.",
+      "terms": "Spotter puede usar su número de teléfono para llamarlo o enviarle mensajes de texto con información sobre su cuenta."
+    },
+    "use_email": "Usar email en su lugar",
+    "use_phone": "Usar teléfono en su lugar"
+  }
+}
