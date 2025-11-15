@@ -1,0 +1,9 @@
+{
+    "title": "Ingresa el código de verificación",
+    "subtitle": "¿Ya tienes una cuenta?",
+    "route_to": "Inicia sesión",
+    "check_email": "Por favor, revisa tu correo electrónico.",
+    "verify_button": "Verificar código",
+    "resend_question": "¿Aún no recibiste el código?",
+    "resend_action": "Reenviar código"
+}

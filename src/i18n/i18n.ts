@@ -6,6 +6,8 @@ import en_auth_signup from './locales/en/auth/sign-up/translation.json';
 import es_auth_signup from './locales/es/auth/sign-up/translation.json';
 import en_auth_signin from './locales/en/auth/sign-in/translation.json';
 import es_auth_signin from './locales/es/auth/sign-in/translation.json';
+import en_auth_code from './locales/en/auth/code/translation.json';
+import es_auth_code from './locales/es/auth/code/translation.json';
 import en_auth_recovery_password from './locales/en/auth/recovery-password/translation.json';
 import es_auth_recovery_password from './locales/es/auth/recovery-password/translation.json';
 
@@ -13,12 +15,14 @@ const resources = {
   en: {
     auth_signup: en_auth_signup,
     auth_signin: en_auth_signin,
-    auth_recovery_password: en_auth_recovery_password
+    auth_recovery_password: en_auth_recovery_password,
+    auth_code: en_auth_code,
   },
   es: {
     auth_signup: es_auth_signup,
     auth_signin: es_auth_signin,
-    auth_recovery_password: es_auth_recovery_password
+    auth_recovery_password: es_auth_recovery_password,
+    auth_code: es_auth_code,
   },
 };
 
@@ -31,7 +35,7 @@ i18n
     lng: language_code,
     fallbackLng: 'en',
     resources,
-    ns: ['auth_signup', 'auth_signin', 'auth_recovery_password'],
+    ns: ['auth_signup', 'auth_signin', 'auth_recovery_password', 'auth_code'],
     interpolation: {
       escapeValue: false,
     },

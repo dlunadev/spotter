@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import { ButtonGradient, Hero, Input, Text, VStack } from "@/components";
+import { ButtonGradient, Hero, Text, VStack } from "@/components";
 import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
 import { Wrapper } from "@/components";
@@ -11,9 +11,9 @@ import { useTimer } from "@/hooks";
 import OTPInput from "@/components/atom/otp/otp.component";
 
 export default function Code() {
-  const [showTimer, setShowTimer] = useState(false);
+  const { t } = useTranslation("auth_code");
 
-  const { t } = useTranslation("auth_signup");
+  const [showTimer, setShowTimer] = useState(false);
   const { formattedTime, reset, start, stop } = useTimer(120);
   const [isCodeSent, setIsCodeSent] = useState(false);
 
@@ -41,40 +41,39 @@ export default function Code() {
       showsVerticalScrollIndicator={false}
     >
       <Hero
-        title="Pone el codigo amiguito"
-        subtitle="Ya tenes cuenta? Entonces"
-        route_to="Inicia sesion pelotudo"
+        title={t("title")}
+        subtitle={t("subtitle")}
+        route_to={t("route_to")}
         redirect_to={() => router.push(AuthRoutesLink.SIGN_IN)}
       />
 
       <Wrapper className="flex-1">
         <VStack className="gap-2 mb-2">
-          <Text size={16}>Por favor, revise su email.</Text>
+          <Text size={16}>{t("check_email")}</Text>
         </VStack>
+
         <View className="flex-1 items-center">
           <OTPInput value={""} onCodeChange={() => {}} />
         </View>
+
         <VStack className="gap-4">
           <ButtonGradient
             onPress={() => {
-              // handleVerifyOTP();
-              console.log("push push push");
               router.push(AuthRoutesLink.RESET_PASSWORD);
             }}
           >
-            Verificar código
+            {t("verify_button")}
           </ButtonGradient>
+
           <Text align="center">
-            Aun no te llego el codigo?{" "}
+            {t("resend_question")}{" "}
             {showTimer ? (
-              <Text size={14} weight={300} color={Colors.BLACK}>
-                <Text size={14} weight={500} color={Colors.BLACK}>
-                  {formattedTime}
-                </Text>
+              <Text size={14} weight={500} color={Colors.BLACK}>
+                {formattedTime}
               </Text>
             ) : (
               <Text weight={600} onPress={() => setShowTimer(true)}>
-                Reenviar código
+                {t("resend_action")}
               </Text>
             )}
           </Text>
