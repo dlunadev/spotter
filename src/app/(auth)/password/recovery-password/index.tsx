@@ -1,4 +1,9 @@
-import { View, TouchableOpacity, Pressable, ActivityIndicator } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import {
@@ -12,33 +17,24 @@ import {
 } from "@/components";
 import { Email, Phone } from "@/assets/svg";
 import { Colors } from "@/constants/Colors";
-import { useDimensions } from "@/hooks";
+import { useInsets } from "@/hooks";
 import { router } from "expo-router";
 import { Wrapper } from "@/components";
 import { useTranslation } from "react-i18next";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import { CountryCode } from "libphonenumber-js";
 import { PhoneUtils } from "@/utils/phone.util";
 import { AuthRoutesLink } from "@/utils/enum/routes";
-
-const recoverySchema = z.object({
-  email: z.string().optional(),
-  phone: z
-    .string()
-    .regex(/^\d{7,15}$/, "Invalid phone number")
-    .trim()
-    .optional(),
-});
-
-type RecoveryData = z.infer<typeof recoverySchema>;
+import {
+  form_schema,
+  recovery_data_schema,
+} from "@/utils/schemas/recovery-password";
 
 export default function RecoveryPassword() {
   const [loading, setLoading] = useState(false);
-  const { t } = useTranslation("auth_signup");
-  const { screen_dimensions } = useDimensions();
-
+  const { t } = useTranslation("auth_recovery_password");
+  const { bottom } = useInsets();
   const [usePhone, setUsePhone] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -50,8 +46,15 @@ export default function RecoveryPassword() {
     code: "AR",
   });
 
-  const { control, handleSubmit, setValue, getValues, setError, formState: { errors } } = useForm<RecoveryData>({
-    resolver: zodResolver(recoverySchema),
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    getValues,
+    setError,
+    formState: { errors },
+  } = useForm<recovery_data_schema>({
+    resolver: zodResolver(form_schema),
     defaultValues: {
       email: "",
       phone: "",
@@ -60,7 +63,7 @@ export default function RecoveryPassword() {
 
   const { email, phone } = getValues();
 
-  const onSubmit = (data: RecoveryData) => {
+  const onSubmit = (data: recovery_data_schema) => {
     setModalVisible(true);
   };
 
@@ -78,16 +81,11 @@ export default function RecoveryPassword() {
       <KeyboardAwareScrollView
         className="flex-1"
         contentContainerClassName="grow"
-        bottomOffset={120}
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="always"
       >
-        <Hero
-          title="Getting back into your account"
-          subtitle="Tell us some information about your account"
-        />
+        <Hero title={t("title")} subtitle={t("subtitle")} />
 
-        <Wrapper className="flex-1 justify-between pb-6">
+        <Wrapper className="flex-1">
           <View className="gap-4 mt-6">
             {usePhone ? (
               <>
@@ -113,7 +111,7 @@ export default function RecoveryPassword() {
 
                         if (!validated) {
                           setError("phone", {
-                            message: "ta mal perro",
+                            message: "Invalid phone number",
                           });
                         }
 
@@ -127,8 +125,7 @@ export default function RecoveryPassword() {
                   )}
                 />
                 <Text size={12} color={Colors.GRAY}>
-                  You'll need to verify that you own this phone number. Be sure
-                  to include your country code
+                  {t("phone_verification_info")}
                 </Text>
               </>
             ) : (
@@ -164,16 +161,15 @@ export default function RecoveryPassword() {
             </Pressable>
 
             <Text size={12} color="#888" className="mt-1">
-              Having problems with your email or phone?
+              {t("having_problems")}
             </Text>
           </View>
-
-          <View className="px-4 mt-auto">
-            <ButtonGradient onPress={handleSubmit(onSubmit)}>
-              Continue
-            </ButtonGradient>
-          </View>
         </Wrapper>
+        <View className="bg-white px-6" style={{ paddingBottom: bottom + 12 }}>
+          <ButtonGradient onPress={handleSubmit(onSubmit)}>
+            {t("button_continue")}
+          </ButtonGradient>
+        </View>
       </KeyboardAwareScrollView>
 
       <Modal
@@ -188,7 +184,7 @@ export default function RecoveryPassword() {
             {usePhone ? "Confirm your number" : "Confirm your email"}
           </Text>
           <Text size={14} color={Colors.BLACK} className="mb-6">
-            We will send a verification code to{" "}
+            {t("modal_text_before_value")}{" "}
           </Text>
           <Text size={14} color={Colors.PRIMARY}>
             {usePhone ? `${countryCode.id} ${phone}` : email}
@@ -200,7 +196,7 @@ export default function RecoveryPassword() {
               className="flex-1 mr-2 border border-gray-300 rounded-xl py-3 items-center"
             >
               <Text size={14} color={Colors.BLACK}>
-                Cancel
+                {t("cancel")}
               </Text>
             </TouchableOpacity>
 
@@ -212,7 +208,7 @@ export default function RecoveryPassword() {
                 <ActivityIndicator color={Colors.WHITE} />
               ) : (
                 <Text size={14} color={Colors.WHITE}>
-                  Confirm
+                  {t("confirm")}
                 </Text>
               )}
             </TouchableOpacity>
