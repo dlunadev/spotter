@@ -10,7 +10,6 @@ import {
   Button,
   ButtonGradient,
 } from "@/components/atom/button/button.component";
-import { sign_up_data_schema, SignUpSchema } from "@/utils/schemas/sign-up";
 import { ButtonSpinner } from "@/components/ui/button";
 import { Keyboard, View } from "react-native";
 import { Trans, useTranslation } from "react-i18next";
@@ -24,8 +23,11 @@ import { CheckIcon } from "@/components/ui/icon";
 import { sign_in_data_schema, SignInSchema } from "@/utils/schemas/sign-in";
 import { router } from "expo-router";
 import { AuthRoutesLink, TabsRoutesLink } from "@/utils/enum/routes";
+import { useAuth } from "@/context/auth.context";
 
 export default function SignInForm() {
+  const { signInWithGoogle } = useAuth();
+
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("auth_signin");
   const {
@@ -124,7 +126,13 @@ export default function SignInForm() {
       </View>
 
       <HStack className="gap-4 w-full">
-        <Button onPress={() => {}} stretch outlined left_icon icon={<Google />}>
+        <Button
+          onPress={signInWithGoogle}
+          stretch
+          outlined
+          left_icon
+          icon={<Google />}
+        >
           Google
         </Button>
         <Button
