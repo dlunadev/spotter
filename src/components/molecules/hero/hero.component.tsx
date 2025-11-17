@@ -14,11 +14,12 @@ interface Hero {
   title: string;
   subtitle?: string;
   route_to?: string;
+  arrow?: boolean;
   redirect_to?: () => void;
 }
 
 export function Hero(props: Hero) {
-  const { title, subtitle, route_to, redirect_to } = props;
+  const { title, subtitle, route_to, arrow, redirect_to } = props;
   const { top } = useInsets();
   const { screen_dimensions } = useDimensions();
   const { height } = screen_dimensions;
@@ -39,13 +40,15 @@ export function Hero(props: Hero) {
 
       <View className="flex-1 justify-between pb-6">
         <View className="mt-4">
-          <Fab
-            placement="top left"
-            className="bg-transparent active:bg-transparent"
-            onPress={() => router.back()}
-          >
-            <ArrowNarrowLeft width={32} height={32} />
-          </Fab>
+          {arrow && (
+            <Fab
+              placement="top left"
+              className="bg-transparent active:bg-transparent"
+              onPress={() => router.back()}
+            >
+              <ArrowNarrowLeft width={32} height={32} />
+            </Fab>
+          )}
         </View>
 
         <View className="px-6 py-4 gap-2">
