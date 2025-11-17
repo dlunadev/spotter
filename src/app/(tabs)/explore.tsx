@@ -1,15 +1,15 @@
-import { View } from 'react-native';
-import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Text } from '@/components';
-import { Colors } from '@/constants/Colors';
-
+import React from "react";
+import { ButtonGradient, Text, Wrapper } from "@/components";
+import { Colors } from "@/constants/Colors";
+import { useAuth } from "@/context/auth.context";
 
 export default function TabTwoScreen() {
-  const insets = useSafeAreaInsets();
+  const { logout, user } = useAuth();
+
   return (
-    <View style={{ paddingTop: insets.top }}>
-      <Text color={Colors.PRIMARY}>asd</Text>
-    </View>
+    <Wrapper>
+      <Text>{user?.email}</Text>
+      <ButtonGradient onPress={async () => logout()}>Logout</ButtonGradient>
+    </Wrapper>
   );
 }
