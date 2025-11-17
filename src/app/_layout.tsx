@@ -9,30 +9,28 @@ import { SWRConfig } from "swr";
 import "@/i18n/i18n";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-export { ErrorBoundary } from "expo-router";
 import { KeyboardProvider } from "react-native-keyboard-controller";
+import * as WebBrowser from "expo-web-browser";
 
+import { AuthProvider, useAuth } from "@/context/auth.context";
+
+WebBrowser.maybeCompleteAuthSession();
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
+  const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
   });
 
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-  return <RootLayoutNav />;
+  return (
+    <KeyboardProvider>
+      <RootLayoutNav loaded={loaded} />
+    </KeyboardProvider>
+  );
 }
 
-function RootLayoutNav() {
+function RootLayoutNav({ loaded }: { loaded: boolean }) {
   return (
     <SWRConfig
       value={{
@@ -41,19 +39,33 @@ function RootLayoutNav() {
         dedupingInterval: 5000,
       }}
     >
-      <GluestackUIProvider mode="dark">
-        <GestureHandlerRootView className="flex-1">
-          <KeyboardProvider>
-            <Stack
-              initialRouteName="(auth)"
-              screenOptions={{ headerShown: false }}
-            >
-              <Stack.Screen name="(auth)" />
-              <Stack.Screen name="(tabs)" />
-            </Stack>
-          </KeyboardProvider>
-        </GestureHandlerRootView>
-      </GluestackUIProvider>
+      <AuthProvider>
+        <AppContent loaded={loaded} />
+      </AuthProvider>
     </SWRConfig>
+  );
+}
+
+function AppContent({ loaded }: { loaded: boolean }) {
+  const { initializing, user } = useAuth();
+
+  useEffect(() => {
+    if (loaded && !initializing) SplashScreen.hideAsync();
+  }, [loaded, initializing]);
+
+  if (!loaded && initializing) return null;
+
+  return (
+    <GluestackUIProvider mode="dark">
+      <GestureHandlerRootView className="flex-1">
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(auth)" />
+          <Stack.Protected guard={!!user}>
+            <Stack.Screen name="(tabs)" />
+          </Stack.Protected>
+          <Stack.Screen name="auth-callback" />
+        </Stack>
+      </GestureHandlerRootView>
+    </GluestackUIProvider>
   );
 }
