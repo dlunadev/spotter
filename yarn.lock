@@ -3593,6 +3593,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@react-native-async-storage/async-storage@npm:2.2.0"
+  dependencies:
+    merge-options: ^3.0.4
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.65 <1.0
+  checksum: efbb9c801fb7eecfad1568d6a5e9d247db420b8ba8f1789d5b783e679432567a53cf54c7e7b5e6f315276f33d1df297253549e0cefef2e683539df346d2a1f2d
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.81.4":
   version: 0.81.4
   resolution: "@react-native/assets-registry@npm:0.81.4"
@@ -4718,6 +4729,67 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@supabase/auth-js@npm:2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/auth-js@npm:2.81.1"
+  dependencies:
+    tslib: 2.8.1
+  checksum: f3e19a32f97474af84bbe77da7df35b20a6d2686b936dfad64f9f86c6b5a2896813bdf0ecfe696f9e7f94743f825ef1725490d2d61c576abc0946340eaa8debd
+  languageName: node
+  linkType: hard
+
+"@supabase/functions-js@npm:2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/functions-js@npm:2.81.1"
+  dependencies:
+    tslib: 2.8.1
+  checksum: 7982adbe5a4c4291a1896c8184ae4fe98f3fc3c57df1e51e5ab32f421ed0616c5a5b6bf8b829987b3607c0ba0c7012125cc59d6fd5600ba30210892ffc39594a
+  languageName: node
+  linkType: hard
+
+"@supabase/postgrest-js@npm:2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/postgrest-js@npm:2.81.1"
+  dependencies:
+    tslib: 2.8.1
+  checksum: 7c04e51107561d3c707ae3e23524e77789aae07edca46760c1a6b2bf6ebfa80ea876528cca81111b080ac155d498cbbaadeb713f63e74e6adb8ab0ebbb62d24a
+  languageName: node
+  linkType: hard
+
+"@supabase/realtime-js@npm:2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/realtime-js@npm:2.81.1"
+  dependencies:
+    "@types/phoenix": ^1.6.6
+    "@types/ws": ^8.18.1
+    tslib: 2.8.1
+    ws: ^8.18.2
+  checksum: 09d0f5c9aaef0784c36a91c9dc77d7e0b071c809baa6ce12397d4f2e2f9a010510ecb2cb719b756a9f400d0e0e489d6d514c7bac9d925fa3a98fac27c2b2e94c
+  languageName: node
+  linkType: hard
+
+"@supabase/storage-js@npm:2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/storage-js@npm:2.81.1"
+  dependencies:
+    tslib: 2.8.1
+  checksum: b2ee81f29e9ef09f3df3b2d5f3e75450aa351a717798adaba3343567038f1a6a70e3772ec790ec0b6e4991ec0da1cf3cbeb54e22b6d9282b27872488564cf671
+  languageName: node
+  linkType: hard
+
+"@supabase/supabase-js@npm:^2.81.1":
+  version: 2.81.1
+  resolution: "@supabase/supabase-js@npm:2.81.1"
+  dependencies:
+    "@supabase/auth-js": 2.81.1
+    "@supabase/functions-js": 2.81.1
+    "@supabase/postgrest-js": 2.81.1
+    "@supabase/realtime-js": 2.81.1
+    "@supabase/storage-js": 2.81.1
+  checksum: c4900e5c676ea2b626e48d505dad2b43e15b666ac5b60f4413f55a8276ccbbc7ee97d52d76973f972f332ae2a0bb187b7e0fec63f4f7ad87a1097e2c69df1800
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0":
   version: 8.0.0
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0"
@@ -4983,6 +5055,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/phoenix@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "@types/phoenix@npm:1.6.6"
+  checksum: 9dc897cb9a4cd62f7a0de48855e6cafded5c676e7d78c4d3a9ade4f21ec82b95eb7195caada26a9a3a5d9aba14f0fd875bc3898e086234b20da63991a033f6e8
+  languageName: node
+  linkType: hard
+
 "@types/react-native@npm:^0.73.0":
   version: 0.73.0
   resolution: "@types/react-native@npm:0.73.0"
@@ -5012,6 +5091,15 @@ __metadata:
   version: 4.0.5
   resolution: "@types/tough-cookie@npm:4.0.5"
   checksum: f19409d0190b179331586365912920d192733112a195e870c7f18d20ac8adb7ad0b0ff69dad430dba8bc2be09593453a719cfea92dc3bda19748fd158fe1498d
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.18.1":
+  version: 8.18.1
+  resolution: "@types/ws@npm:8.18.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0331b14cde388e2805af66cad3e3f51857db8e68ed91e5b99750915e96fe7572e58296dc99999331bbcf08f0ff00a227a0bb214e991f53c2a5aca7b0e71173fa
   languageName: node
   linkType: hard
 
@@ -7669,6 +7757,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-base64-decode@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-decode@npm:1.0.0"
+  checksum: 4c59eb1775a7f132333f296c5082476fdcc8f58d023c42ed6d378d2e2da4c328c7a71562f271181a725dd17cdaa8f2805346cc330cdbad3b8e4b9751508bd0a3
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8806,6 +8901,13 @@ __metadata:
   version: 7.0.0
   resolution: "is-number@npm:7.0.0"
   checksum: 456ac6f8e0f3111ed34668a624e45315201dff921e5ac181f8ec24923b99e9f32ca1a194912dc79d539c97d33dba17dc635202ff0b2cf98326f608323276d27a
+  languageName: node
+  linkType: hard
+
+"is-plain-obj@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "is-plain-obj@npm:2.1.0"
+  checksum: cec9100678b0a9fe0248a81743041ed990c2d4c99f893d935545cfbc42876cbe86d207f3b895700c690ad2fa520e568c44afc1605044b535a7820c1d40e38daa
   languageName: node
   linkType: hard
 
@@ -10162,6 +10264,15 @@ __metadata:
   version: 6.0.0
   resolution: "memoize-one@npm:6.0.0"
   checksum: f185ea69f7cceae5d1cb596266dcffccf545e8e7b4106ec6aa93b71ab9d16460dd118ac8b12982c55f6d6322fcc1485de139df07eacffaae94888b9b3ad7675f
+  languageName: node
+  linkType: hard
+
+"merge-options@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "merge-options@npm:3.0.4"
+  dependencies:
+    is-plain-obj: ^2.1.0
+  checksum: d86ddb3dd6e85d558dbf25dc944f3527b6bacb944db3fdda6e84a3f59c4e4b85231095f58b835758b9a57708342dee0f8de0dffa352974a48221487fe9f4584f
   languageName: node
   linkType: hard
 
@@ -11760,6 +11871,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-get-random-values@npm:~1.11.0":
+  version: 1.11.0
+  resolution: "react-native-get-random-values@npm:1.11.0"
+  dependencies:
+    fast-base64-decode: ^1.0.0
+  peerDependencies:
+    react-native: ">=0.56"
+  checksum: 07729f70a007f7a3b8f98ebf687c1298ba288b87dd71d8ba385be6b5a377718b27b97547bbe1db6b225b83ee109dfce0b01721e6ed535d53892f3ac81e6bf975
+  languageName: node
+  linkType: hard
+
 "react-native-is-edge-to-edge@npm:^1.1.6, react-native-is-edge-to-edge@npm:^1.2.1":
   version: 1.2.1
   resolution: "react-native-is-edge-to-edge@npm:1.2.1"
@@ -11874,6 +11996,17 @@ __metadata:
   version: 1.0.5
   resolution: "react-native-swipe-gestures@npm:1.0.5"
   checksum: d637bc40baa50fa0ce3b6cf2b494efeceaea03cc3875cb7cf7d76922914a21d5e6b098d4a084fb291ce61bfbb0a241c03cff24b15bebf0cfae1c146f4ad10d92
+  languageName: node
+  linkType: hard
+
+"react-native-url-polyfill@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "react-native-url-polyfill@npm:3.0.0"
+  dependencies:
+    whatwg-url-without-unicode: 8.0.0-3
+  peerDependencies:
+    react-native: "*"
+  checksum: 3d6e02b8c32933bca588b70e86c1b2981cd2d9f4055f7ce5ba5f321596ffae5ce89fea41af8d13eca7b4f29daf685406354c761696e5a4bdfb5698468e54a527
   languageName: node
   linkType: hard
 
@@ -12976,7 +13109,9 @@ __metadata:
     "@hookform/resolvers": ^5.2.2
     "@legendapp/motion": ^2.4.0
     "@react-aria/utils": ^3.29.0
+    "@react-native-async-storage/async-storage": ^2.2.0
     "@react-navigation/native": ^7.1.6
+    "@supabase/supabase-js": ^2.81.1
     "@types/react": ~19.1.10
     "@types/react-native": ^0.73.0
     "@typescript-eslint/eslint-plugin": ^8.46.2
@@ -13014,6 +13149,7 @@ __metadata:
     react-native-calendars: ^1.1313.0
     react-native-confirmation-code-field: ^8.0.1
     react-native-gesture-handler: ~2.28.0
+    react-native-get-random-values: ~1.11.0
     react-native-keyboard-controller: 1.18.5
     react-native-reanimated: ~4.1.1
     react-native-safe-area-context: ^5.6.2
@@ -13021,6 +13157,7 @@ __metadata:
     react-native-size-matters: ^0.4.2
     react-native-svg: ^15.12.0
     react-native-svg-transformer: ^1.5.1
+    react-native-url-polyfill: ^3.0.0
     react-native-web: ^0.21.0
     react-native-worklets: ^0.5.1
     react-stately: ^3.39.0
@@ -13652,7 +13789,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.8.0":
+"tslib@npm:2.8.1, tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.8.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: e4aba30e632b8c8902b47587fd13345e2827fa639e7c3121074d5ee0880723282411a8838f830b55100cbe4517672f84a2472667d355b81e8af165a55dc6203a
@@ -14276,7 +14413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.11.0, ws@npm:^8.12.1, ws@npm:^8.18.3":
+"ws@npm:^8.11.0, ws@npm:^8.12.1, ws@npm:^8.18.2, ws@npm:^8.18.3":
   version: 8.18.3
   resolution: "ws@npm:8.18.3"
   peerDependencies:
