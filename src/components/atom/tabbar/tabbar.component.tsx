@@ -14,8 +14,6 @@ export const TabBar = (props: Tabbar) => {
         const { options } = descriptors[route.key];
         const isFocused = state.index === index;
 
-        console.log(JSON.stringify(options, null, 2));
-
         const onPress = () => {
           if (!isFocused) {
             navigation.dispatch(
