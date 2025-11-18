@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Session } from '@supabase/supabase-js';
-import { supabase } from '../../infraestructure/supabase/supabase';
+import { Session, SupabaseClient } from '@supabase/supabase-js';
 
 const SUPABASE_TOKEN = "SPOTTER_TOKEN";
 
@@ -22,7 +21,7 @@ export class API_UTILS {
     await AsyncStorage.removeItem(SUPABASE_TOKEN);
   };
 
-  static restore_session = async () => {
+  static restore_session = async (supabase: SupabaseClient) => {
     const session = await this.get_token();
     if (session) {
       const { data } = await supabase.auth.setSession(session);
