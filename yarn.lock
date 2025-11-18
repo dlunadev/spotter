@@ -5026,6 +5026,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jest@npm:29.5.14":
+  version: 29.5.14
+  resolution: "@types/jest@npm:29.5.14"
+  dependencies:
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: 18dba4623f26661641d757c63da2db45e9524c9be96a29ef713c703a9a53792df9ecee9f7365a0858ddbd6440d98fe6b65ca67895ca5884b73cbc7ffc11f3838
+  languageName: node
+  linkType: hard
+
 "@types/jsdom@npm:^20.0.0":
   version: 20.0.1
   resolution: "@types/jsdom@npm:20.0.1"
@@ -7408,7 +7418,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.7.0":
+"expect@npm:^29.0.0, expect@npm:^29.7.0":
   version: 29.7.0
   resolution: "expect@npm:29.7.0"
   dependencies:
@@ -9252,7 +9262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-expo@npm:~54.0.11":
+"jest-expo@npm:~54.0.13":
   version: 54.0.13
   resolution: "jest-expo@npm:54.0.13"
   dependencies:
@@ -9577,7 +9587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^29.2.1":
+"jest@npm:~29.7.0":
   version: 29.7.0
   resolution: "jest@npm:29.7.0"
   dependencies:
@@ -11690,7 +11700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^29.7.0":
+"pretty-format@npm:^29.0.0, pretty-format@npm:^29.7.0":
   version: 29.7.0
   resolution: "pretty-format@npm:29.7.0"
   dependencies:
@@ -13308,6 +13318,7 @@ __metadata:
     "@react-native-async-storage/async-storage": ^2.2.0
     "@react-navigation/native": ^7.1.6
     "@supabase/supabase-js": ^2.81.1
+    "@types/jest": 29.5.14
     "@types/react": ~19.1.10
     "@types/react-native": ^0.73.0
     "@typescript-eslint/eslint-plugin": ^8.46.2
@@ -13329,8 +13340,8 @@ __metadata:
     expo-web-browser: ~15.0.7
     i18n-iso-countries: ^7.14.0
     i18next: ^25.6.0
-    jest: ^29.2.1
-    jest-expo: ~54.0.11
+    jest: ~29.7.0
+    jest-expo: ~54.0.13
     libphonenumber-js: ^1.12.26
     lucide-react: ^0.552.0
     lucide-react-native: ^0.510.0
