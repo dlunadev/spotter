@@ -2,10 +2,8 @@ import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 
 import { SupabaseClient } from "@supabase/supabase-js";
-import { User } from "../../domain/auth/user.entity";
-import { UserRepository } from "../../domain/auth/user.repository";
-import { supabase } from "../../client";
-import { API_UTILS } from "../../utils/shared/session_storage";
+import { User } from "../../../domain/auth/user.entity";
+import { UserRepository } from "../../../domain/auth/user.repository";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -52,11 +50,3 @@ export class SupabaseAuthAdapter implements UserRepository {
     return new User(u.id, u.email ?? null);
   }
 }
-
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) {
-    API_UTILS.save_token(session);
-  } else {
-    API_UTILS.delete_token();
-  }
-});

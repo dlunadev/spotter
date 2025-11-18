@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 import 'react-native-url-polyfill/auto'
 import 'react-native-get-random-values'
+import { API_UTILS } from '../../utils/shared/session_storage';
 
 export const supabase = createClient(
   process.env.EXPO_PUBLIC_SUPABASE_URL as string,
@@ -16,3 +17,12 @@ export const supabase = createClient(
     },
   }
 );
+
+
+supabase.auth.onAuthStateChange((_event, session) => {
+  if (session) {
+    API_UTILS.save_token(session);
+  } else {
+    API_UTILS.delete_token();
+  }
+});
