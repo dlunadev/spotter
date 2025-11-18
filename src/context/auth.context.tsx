@@ -5,8 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import { SupabaseAuthAdapter } from "../../sdk/infraestructure/auth/auth.supabase.adapter";
-import { supabase } from "../../sdk/client";
+import { SupabaseAuthAdapter } from "../../sdk/infraestructure/supabase/auth/auth.supabase.adapter";
+import { supabase } from "../../sdk/infraestructure/supabase/supabase";
 import { AuthServices } from "../../sdk/services/auth/auth.service";
 import { User } from "../../sdk/domain/auth/user.entity";
 import { router } from "expo-router";

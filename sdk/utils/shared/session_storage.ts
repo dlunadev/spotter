@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Session } from '@supabase/supabase-js';
-import { supabase } from '../../client';
+import { supabase } from '../../infraestructure/supabase/supabase';
 
 const SUPABASE_TOKEN = "SPOTTER_TOKEN";
 

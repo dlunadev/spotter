@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import * as Linking from "expo-linking";
 import { router } from "expo-router";
-import { supabase } from "../../sdk/client";
+import { supabase } from "../../sdk/infraestructure/supabase/supabase";
 import { AuthRoutesLink, TabsRoutesLink } from "@/utils/enum/routes";
 import { Center } from "@/components";
 import { ActivityIndicator } from "react-native";
